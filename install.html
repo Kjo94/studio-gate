@@ -1,0 +1,6 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta name="robots" content="noindex"><title>작업실 설치</title><style>body{font:15px 'Malgun Gothic',sans-serif;background:#f4f5f9;color:#1d2433;display:grid;place-items:center;min-height:96vh;margin:0;padding:16px;box-sizing:border-box}div{background:#fff;border:1px solid #e3e6ee;border-radius:12px;padding:24px;max-width:420px}</style></head>
+<body><div id="m">서버로 연결하는 중이에요...</div><script>
+var t=location.hash.slice(1),m=document.getElementById('m');
+if(!/^[A-Za-z0-9_-]{20,64}$/.test(t)){m.textContent='링크가 올바르지 않아요. 관리자에게 새 링크를 받아 주세요.'}
+else{fetch('server.json?t='+Date.now()).then(function(r){return r.json()}).then(function(j){location.replace(j.url+'/__install/'+t)}).catch(function(){m.textContent='서버에 연결하지 못했어요. 잠시 뒤 다시 열어 주세요.'})}
+</script></body></html>
